@@ -6,7 +6,9 @@ class ApplicationController < ActionController::API
         author = Author.new(params_author)
         author.save
         if author.save
-            render json: author, status: 
+            render json: author, status: 201
+        else
+            render json: author.errors, status: :unprocesable_entity
         end
     end
     def params_author
